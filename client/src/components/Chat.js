@@ -34,7 +34,7 @@ const Chat = () => {
                     conversation: { id: conversationIdRef.current }
                 };
 
-                const response = await fetch('http://localhost:3000/api/message', {
+                const response = await fetch('https://restaurant-nw3v.onrender.com/api/messages', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -77,10 +77,10 @@ const Chat = () => {
                 ))
             } {
                 isTyping && < div className = "message bot" > Typing... < /div>} <
-                    div ref = { messagesEndRef }
-                /> <
-                /div> <
-                div className = "chat-input" >
+                div ref = { messagesEndRef }
+                /> < /
+                div > <
+                    div className = "chat-input" >
                     <
                     input
                 type = "text"
@@ -89,8 +89,8 @@ const Chat = () => {
                 onChange = { e => setInputValue(e.target.value) }
                 onKeyDown = { handleKeyPress }
                 /> <
-                button onClick = { sendMessage } > Send < /button> <
-                    /div> <
+                button onClick = { sendMessage } > Send < /button> < /
+                div > <
                     /div>
             );
         };

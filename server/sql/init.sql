@@ -47,7 +47,7 @@ CREATE TABLE user_preferences (
   past_orders JSON
 );
 
--- Sample data
+
 INSERT INTO restaurants (name, cuisine, location, price_range) VALUES
 ('Tasty Bistro', 'Italian', 'New York', '$$');
 

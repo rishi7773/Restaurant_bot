@@ -4,9 +4,11 @@ require('dotenv').config();
 
 const client = new ConversationAnalysisClient(process.env.CLU_ENDPOINT, new AzureKeyCredential(process.env.CLU_API_KEY));
 
+
+
 async function getIntent(message) {
     try {
-        // Validate input to prevent invalid text errors
+
         if (!message || typeof message !== 'string' || message.trim() === '') {
             console.error('Invalid or empty input text provided to CLU');
             return 'none';
@@ -24,8 +26,8 @@ async function getIntent(message) {
                 }
             },
             parameters: {
-                projectName: "RestaurantBot", // Ensure this matches your CLU project name
-                deploymentName: "production", // Ensure this matches your CLU deployment name
+                projectName: "RestaurantBot",
+                deploymentName: "production",
                 stringIndexType: "TextElement_V8",
                 verbose: true
             }
@@ -33,7 +35,7 @@ async function getIntent(message) {
 
         const result = await client.analyzeConversation(task);
 
-        // Check if result contains prediction data
+
         if (result && result.result && result.result.prediction) {
             return result.result.prediction.topIntent || 'none';
         } else {
@@ -45,5 +47,7 @@ async function getIntent(message) {
         return 'none';
     }
 }
+
+
 
 module.exports = { getIntent };
